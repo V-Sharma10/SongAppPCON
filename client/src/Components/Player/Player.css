@@ -1,0 +1,11 @@
+.player{
+    /* margin-top:50vh; */
+    width:100%;
+}
+#sticky-footer {
+    /* flex-shrink: none; */
+    position:fixed;
+   bottom:0;
+    width:100%;
+    color:white;
+}
