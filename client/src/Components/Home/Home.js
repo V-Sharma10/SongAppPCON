@@ -64,7 +64,11 @@ export default class Home extends Component {
                 </FourColGrid>
                 </div>
                 <br/><br/>
-                {!this.state.loading?<Player currentSong={this.state.current_song}/>:null}
+                {!this.state.loading?<Player 
+                currentSongName={this.state.current_song.name}
+                currentSongUrl={this.state.current_song.url}
+                currentSongImage={this.state.current_song.image}
+                />:null}
             </div>
         )
     }

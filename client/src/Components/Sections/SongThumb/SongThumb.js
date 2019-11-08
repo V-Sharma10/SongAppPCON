@@ -5,7 +5,12 @@ export default function SongThumb(props) {
 
     const updateSong=()=>{
         console.log(props.songUrl + 'child ');
-       return props.selectSong(props.songUrl);
+        var SongObj={
+            name:props.songName,
+            url:props.songUrl,
+            image:props.image
+        }
+       return props.selectSong(SongObj);
     }
     return (
         <div className="moviethumb">

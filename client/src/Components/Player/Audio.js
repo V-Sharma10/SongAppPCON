@@ -10,8 +10,9 @@ export default class Audio extends Component {
     render() {
         return (
             <div style={{
+                display:'flex'
                 }}>
-                <i style={{color:'white'}} className=""></i>
+                <i style={{color:'white',fontSize:'28px',padding:'20px',}} className="fa fa-heart"></i>
               <input style={{width:'80%',}} type="range" min="0" max="100" defaultValue="0" class="slider" id="volume-range"/>
             </div>
         )
