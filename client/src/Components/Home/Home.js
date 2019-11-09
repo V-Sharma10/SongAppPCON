@@ -57,6 +57,7 @@ export default class Home extends Component {
                                     selectSong={this.changeSong}
                                     songUrl={this.state.list[i].url}
                                     
+                                    
                                 />
                             )
                         })
