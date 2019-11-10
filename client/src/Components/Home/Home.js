@@ -3,6 +3,7 @@ import axios from 'axios';
 import Spinner from './../Sections/Spinner/Spinner';
 import HeroImage from '../Sections/DailyImage/HeroImage';
 import Player from '../Player/Player';
+import Player2 from '../Player/Player2';
 import FourColGrid from './../Sections/FourColGrid/FourColGrid';
 import SongThumb from '../Sections/SongThumb/SongThumb';
 import './Home.css';
@@ -25,8 +26,8 @@ export default class Home extends Component {
       }
 
       changeSong=(song)=>{
-          console.log('parent component');
-        console.log(song);
+          console.log('parent component ');
+          console.log(song);
         this.setState({
             current_song:song,
             
@@ -66,15 +67,23 @@ export default class Home extends Component {
                 </div>
                 <br/><br/>
                 {!this.state.loading?
+                <React.Fragment>
                 
-                <Player 
+                {/* <Player 
+                currentSongName={this.state.current_song.name}
+                currentSongUrl={this.state.current_song.url}
+                currentSongImage={this.state.current_song.image}
+                song = {this.state.song}
+                /> */}
+
+                <Player2 
                 currentSongName={this.state.current_song.name}
                 currentSongUrl={this.state.current_song.url}
                 currentSongImage={this.state.current_song.image}
                 song = {this.state.song}
                 />
                 
-                
+                </React.Fragment>
                 
                 
                 :null}
