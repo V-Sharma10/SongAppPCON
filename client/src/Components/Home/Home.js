@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Spinner from './../Sections/Spinner/Spinner';
 import HeroImage from '../Sections/DailyImage/HeroImage';
-import Player from '../Player/Player';
+// import Player from '../Player/Player';
 import Player2 from '../Player/Player2';
 import FourColGrid from './../Sections/FourColGrid/FourColGrid';
 import SongThumb from '../Sections/SongThumb/SongThumb';
 import './Home.css';
+// import Player3 from '../Player/Player3';
 export default class Home extends Component {
       constructor(props) {
           super(props);
@@ -30,6 +31,7 @@ export default class Home extends Component {
           console.log(song);
         this.setState({
             current_song:song,
+           
             
         })
        
@@ -82,6 +84,12 @@ export default class Home extends Component {
                 currentSongImage={this.state.current_song.image}
                 song = {this.state.song}
                 />
+                 {/* <Player3
+                currentSongName={this.state.current_song.name}
+                currentSongUrl={this.state.current_song.url}
+                currentSongImage={this.state.current_song.image}
+                song = {this.state.song}
+                /> */}
                 
                 </React.Fragment>
                 

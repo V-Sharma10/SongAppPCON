@@ -5,6 +5,7 @@ export default function SongThumb(props) {
 
     const updateSong=()=>{
         console.log(props.songUrl + ' child ');
+       
         var SongObj={
             name:props.songName,
             url:props.songUrl,

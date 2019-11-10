@@ -1,52 +1,39 @@
 import React, { useState } from 'react';
 import './Player.css';
+import Spinner from '../Sections/Spinner/Spinner';
 
 export default function Player2(props) {
-   var [slider, setSlider] = useState(props.song.currentTime);
-   var [buffer, isbuffering] = useState(false);
-   
-    
+    var [buffer, isBuffering] =useState(true);
+    var lastTime= 0 ;
+    var buffering = true;
      props.song.src = props.currentSongUrl;
-    //  setCount(count=1);
-    props.song.addEventListener("error", function () {
-        if (props.song.error) {
-            console.log(props.song.error.code);
-
-        }
-        if(props.song.error.code === 20){
-            console.log('AbortError');
-        }
-    }, false);
-    // props.song.paused=false;
-    // props.song.autoplay = true;
-    props.song.play().then(()=>{
-
-    }).catch(err => console.log(err));
-    console.log(props.song.play());
-    
+   
+    props.song.play().then((res)=>{
+        console.log('playing ' + res)
+    }).catch((err)=> console.log(err));
+   
     console.log(props.song.src);
-    setInterval(() => {
-        console.log(props.song.currentTime + "/" + props.song.duration + ";is paused: " + props.song.paused + ";isSeeking: " + props.song.seeking + "; Volume:" + props.song.volume + ";autoplay: " + props.song.autoplay);
-        // setSlider(slider=props.song.currentTime);
-        
-    }, 1000);
-    var time = 0;
-    setInterval(() => {
-        if (props.song.currentTime === time && props.song.paused===false && !props.song.ended) {
-            console.log('buffering');
-            isbuffering(buffer=true);
+    
+    setInterval(()=>{
+        console.log(props.song.currentTime);
+        lastTime=props.song.currentTime;
+        if (lastTime === props.song.currentTime && !props.song.ended && !props.song.paused) {
+            isBuffering(false);
+        } else {
+            isBuffering(true);
         }
-        time = props.song.currentTime;
-    }, 1000)
+    },1000)
 
     
+
 
     return (
-        <div class="player sticky">
-            {buffer?'buffering':null};<br/>
-            <div id="sticky-footer" class="bg-dark " >
-                <div class="container-fluid " style={{width:'100%',display:'flex',height:'60px'}}>
+        <div className="player sticky">
+            
+            <div id="sticky-footer" className="bg-dark " >
+                <div className="container-fluid " style={{width:'100%',display:'flex',height:'60px'}}>
                     <div style={{width:"20%"}}>
+                        {buffer?<Spinner/>:null} &nbsp;
                         {props.currentSongName} &nbsp;
                         <img alt={props.currentSongName} src={props.currentSongImage} height="60px" style={{marginTop:'5px'}}/>
                         {/* {this.state.buffering===true?'buffering':null} */}
@@ -60,7 +47,7 @@ export default function Player2(props) {
                             {/* {this.song.play()}; */}
                             {/* {song.play()} */}
                         <input style={{width:'85%',marginLeft:'10px'}} type="range" min="0" max="100"
-                        value={slider}
+                        // value={slider}
                         className="slider" id="song-range"/>
                         </div>
 
