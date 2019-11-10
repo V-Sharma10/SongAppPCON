@@ -13,6 +13,7 @@ export default class Home extends Component {
                 loading:true,
                 list:[],
                 current_song:'',
+                song : new Audio(),
             }
         axios.get('http://localhost:5000/').then((res)=>{
             console.log(res.data);
@@ -28,15 +29,15 @@ export default class Home extends Component {
         console.log(song);
         this.setState({
             current_song:song,
+            
         })
+       
       }
 
     render() {
 
         return (
             <div>
-                {/* Home */}
-               
                 {this.state.loading?<Spinner/>:
                 <HeroImage
                     image={this.state.list[0].cover_image}
@@ -52,7 +53,6 @@ export default class Home extends Component {
                                 <SongThumb key={i}
                                 clickable='true'
                                     image = {this.state.list[i].cover_image}
-                                    // movieId={element.id}
                                     songName = { this.state.list[i].song }
                                     selectSong={this.changeSong}
                                     songUrl={this.state.list[i].url}
@@ -65,11 +65,19 @@ export default class Home extends Component {
                 </FourColGrid>
                 </div>
                 <br/><br/>
-                {!this.state.loading?<Player 
+                {!this.state.loading?
+                
+                <Player 
                 currentSongName={this.state.current_song.name}
                 currentSongUrl={this.state.current_song.url}
                 currentSongImage={this.state.current_song.image}
-                />:null}
+                song = {this.state.song}
+                />
+                
+                
+                
+                
+                :null}
             </div>
         )
     }

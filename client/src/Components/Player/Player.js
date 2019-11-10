@@ -1,10 +1,12 @@
 import React from 'react'
 import './Player.css'
 export default function Player(props) {
-    var song = new Audio();
-    song.src=props.currentSongUrl;
-    song.play();
-    console.log(props);
+    // var song = new Audio();
+    // song.src=props.currentSongUrl;
+    // song.play();
+    props.song.src=props.currentSongUrl;
+    console.log(props.song.src);
+    props.song.play();
     return (
         <div class="player sticky">
             <div id="sticky-footer" class="bg-dark " >
