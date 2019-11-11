@@ -12,6 +12,10 @@ export default function Player2(props) {
         console.log('playing ' + res)
     }).catch((err)=> console.log(err));
    
+    props.song.addEventListener('waiting', () => {
+        console.log('waiting');
+        
+    })
     console.log(props.song.src);
     
     setInterval(()=>{
@@ -22,7 +26,15 @@ export default function Player2(props) {
         } else {
             isBuffering(true);
         }
+
+         
+
+
+
     },1000)
+
+
+  
 
     
 

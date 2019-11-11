@@ -17,7 +17,7 @@ export default class Home extends Component {
                 current_song:'',
                 song : new Audio(),
             }
-        axios.get('http://localhost:5000/').then((res)=>{
+        axios.get('http://localhost:5010/').then((res)=>{
             console.log(res.data);
             this.setState({
                 loading:false,
