@@ -8,7 +8,7 @@
     position:fixed;
    bottom:0;
     width:100%;
-    color:white;
+    color:white!important;
 }
 .fav:hover{
     transform:scale(1.2,1.2);

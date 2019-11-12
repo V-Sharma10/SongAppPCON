@@ -9,7 +9,7 @@ import FourColGrid from './../Sections/FourColGrid/FourColGrid';
 import SongThumb from '../Sections/SongThumb/SongThumb';
 import './Home.css';
 import Player3 from '../Player/Player3';
-// import Player3 from '../Player/Player3';
+import firebase from './../../Firebase'
 export default class Home extends Component {
       constructor(props) {
           super(props);
@@ -17,7 +17,7 @@ export default class Home extends Component {
                 loading:true,
                 list:[],
                 current_song:'',
-                song : new Audio(),
+                song : props.song,
             }
         axios.get('http://localhost:5010/').then((res)=>{
             console.log(res.data);
@@ -38,6 +38,20 @@ export default class Home extends Component {
         })
        
       }
+      componentDidMount(){
+          firebase.auth().onAuthStateChanged((user)=>{
+              if(user){
+                  console.log(user)
+              }
+          })
+      }
+       componentDidUpdatet() {
+           firebase.auth().onAuthStateChanged((user) => {
+               if (user) {
+                   console.log(user)
+               }
+           })
+       }
 
     render() {
 
