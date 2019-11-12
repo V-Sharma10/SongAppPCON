@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
     console.log(API_URL);
     axios.get(API_URL).then((result)=>{
-        console.log(result.data);n
+        console.log(result.data);
         res.send(result.data);
     }).catch((error)=>console.log(error));
 })

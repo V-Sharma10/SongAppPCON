@@ -4,9 +4,11 @@ import Spinner from './../Sections/Spinner/Spinner';
 import HeroImage from '../Sections/DailyImage/HeroImage';
 // import Player from '../Player/Player';
 import Player2 from '../Player/Player2';
+// import Player3 from '../Player/Player3';
 import FourColGrid from './../Sections/FourColGrid/FourColGrid';
 import SongThumb from '../Sections/SongThumb/SongThumb';
 import './Home.css';
+import Player3 from '../Player/Player3';
 // import Player3 from '../Player/Player3';
 export default class Home extends Component {
       constructor(props) {
