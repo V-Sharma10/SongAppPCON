@@ -31,17 +31,18 @@ export default class Home extends Component {
       changeSong=(song)=>{
           console.log('parent component ');
           console.log(song);
-        this.setState({
-            current_song:song,
+        // this.setState({
+        //     current_song:song,
            
             
-        })
+        // })
+        this.props.selectSong(song)
        
       }
       componentDidMount(){
           firebase.auth().onAuthStateChanged((user)=>{
               if(user){
-                  console.log(user)
+                //   console.log(user)
               }
           })
       }
@@ -75,7 +76,7 @@ export default class Home extends Component {
                                     songName = { this.state.list[i].song }
                                     selectSong={this.changeSong}
                                     songUrl={this.state.list[i].url}
-                                    
+                                    artists={this.state.list[i].artists}
                                     
                                 />
                             )
@@ -94,12 +95,12 @@ export default class Home extends Component {
                 song = {this.state.song}
                 /> */}
 
-                <Player2 
+                {/* <Player2 
                 currentSongName={this.state.current_song.name}
                 currentSongUrl={this.state.current_song.url}
                 currentSongImage={this.state.current_song.image}
                 song = {this.state.song}
-                />
+                /> */}
                  {/* <Player3
                 currentSongName={this.state.current_song.name}
                 currentSongUrl={this.state.current_song.url}

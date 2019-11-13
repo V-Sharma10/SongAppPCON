@@ -2,17 +2,54 @@ import React, { useState , useEffect } from 'react';
 import './Player.css';
 import Spinner from '../Sections/Spinner/Spinner';
 import Slider from './Slider';
+import firebase from './../../Firebase'
 
 export default function Player2(props) {
     var [slide,setSlide]=useState(0);
+    var favArr=[];
     var time =0;
     var duration = 0;
     props.song.src = props.currentSongUrl;
     props.song.autoplay=true;
     console.log(props.song.controls)
-    console.log(props.song)
+    console.log(props)
     
+    const FavSong=()=>{
          
+         
+        firebase.auth().onAuthStateChanged((user)=>{
+            if(user){
+                firebase.database().ref(`/Users/${user.uid}/Favourite`).once('value', (snap) => {
+                    console.log(snap.val());
+                     favArr=snap.val()
+                    // if (!snap=== null) {
+                    //     console.log('accesing array')
+                    //     console.log(snap.val());
+                    //     favArr = snap.val();
+                    // } else {
+                        console.log('favArr after getting data from firebase: ')
+                    console.log( favArr);
+
+                    // }
+                }).then(()=>{
+                    favArr.push(props);
+                    
+                    console.log(favArr);
+
+                     firebase.database().ref(`/Users/${user.uid}/Favourite`).set(favArr).then(() => {
+                         console.log('successfully favourited')
+                     }).catch((err) => console.log(err));
+                }).catch((err)=> console.log(err))
+               console.log('onAuth Working')
+                
+               
+            }
+            else{
+                alert('Please login to add songs to your favourite list');
+            }
+        })
+        console.log(favArr)
+    }
            
 
        setInterval(() => {
@@ -47,8 +84,10 @@ export default function Player2(props) {
                        
                     </div>
 
-                    <div className="SongThumb" style={{width:'10%',justifyContent:'center',marginTop:'10px',display:'flex'}}>
-                      
+                    <div className="SongThumb" style={{width:'20%',justifyContent:'center',marginTop:'10px',display:'flex'}}>
+                        <button onClick={FavSong}><img 
+                                src={require('./../images/fav.png')}
+                                 alt="favourite" width="60px"/></button>
                         <button onClick={
                             ()=>{props.song.play()
                             .then((result)=> console.log(result))
@@ -79,7 +118,7 @@ export default function Player2(props) {
 
 
                         </div>
-                    <div className="Slider" style={{width:'70%',marginTop:'30px'}}>
+                    <div className="Slider" style={{width:'60%',marginTop:'30px'}}>
                             
 
                             {/* {Slider()} */}

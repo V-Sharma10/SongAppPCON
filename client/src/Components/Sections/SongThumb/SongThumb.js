@@ -9,10 +9,12 @@ export default function SongThumb(props) {
         var SongObj={
             name:props.songName,
             url:props.songUrl,
-            image:props.image
+            image:props.image,
+            artists: props.artists
         }
        return props.selectSong(SongObj);
     }
+    
     return (
         <div className="moviethumb">
             <div>
